@@ -30,7 +30,7 @@ function createWindow () {
     minHeight: 800,
     backgroundColor: '#312450',
     show: false,
-    icon: path.join(__dirname, 'assets/icons/png/64x64.png'),
+    icon: path.join(__dirname, 'assets/icons/win/icon.ico'),
     webPreferences: {
       nodeIntegration: true
     }
@@ -63,7 +63,7 @@ function createWindow () {
     minHeight: 600,
     backgroundColor: '#312450',
     show: false,
-    icon: path.join(__dirname, 'assets/icons/png/64x64.png'),
+    icon: path.join(__dirname, 'assets/icons/win/icon.ico'),
     parent: mainWindow,
     webPreferences: {
       nodeIntegration: true
