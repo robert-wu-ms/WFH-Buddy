@@ -22,12 +22,15 @@ function ping(host, port) {
 	}
 }
 
-for (let i=1; i<100; i++) {
-	setTimeout(function(){
-	  ping('bing.com', 80);
-	}, i * 1000); 
+
+function timeout1() {
+    setTimeout(function () {
+        ping('bing.com', 80);
+        timeout1();
+    }, 1000);
 }
 
+timeout1();
 
 if (!window.requestAnimationFrame) {
     window.requestAnimationFrame =
@@ -81,6 +84,11 @@ function MeasureConnectionSpeed() {
     }
 }
 
-for (let i=1; i<100; i++) {
-    setTimeout(InitiateSpeedDetection, i*1000 );
+function timeout2() {
+    setTimeout(function () {
+        InitiateSpeedDetection();
+        timeout2();
+    }, 1000);
 }
+
+timeout2();
