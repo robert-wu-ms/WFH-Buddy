@@ -1,0 +1,26 @@
+<template class="section-template">
+  <audio id="alarmAudio">
+    <source src="assets/audio/alarm.ogg" type="audio/ogg">
+    <source src="assets/audio/alarm.mp3" type="audio/mpeg">
+  </audio>
+
+  <section id="pomodoro" class="wrapper style2 fullscreen">
+    <div class="inner" style="text-align:center">
+      <h1>Pomodoro</h1>
+      <p>Take a break every 25 mins with the pomodoro technique</p>
+
+      <ul class="actions">
+        <li><button onclick="pomodomoTimer()">Pomodoro</button></li>
+        <li><button onclick="shortBreakTimer()">Short Break</button></li>
+        <li><button onclick="longBreakTimer()">Long Break</button></li>
+      </ul>
+      <h1 id="time">25:00</h1>
+
+      <ul class="actions">
+        <li><button style="background-color:#990000;" id="startStopButton" onclick="stopStart()">Stopped</button></li>
+      </ul>
+
+    </div>
+    <script src="assets/js/pomodomo.js"></script>
+  </section>
+</template>  
