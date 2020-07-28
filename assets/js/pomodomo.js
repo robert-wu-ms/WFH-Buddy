@@ -5,18 +5,21 @@ function pomodomoTimer()
 {
     timeRemaining = 60 * 25;
     $('#time').text(Math.floor(timeRemaining / 60) + ':' + ('0' + timeRemaining % 60).slice(-2));
+    timeRemaining = timeRemaining + 1;
 }
 
 function shortBreakTimer()
 {
     timeRemaining = 60 * 5;
     $('#time').text(Math.floor(timeRemaining / 60) + ':' + ('0' + timeRemaining % 60).slice(-2));
+    timeRemaining = timeRemaining + 1;
 }
 
 function longBreakTimer()
 {
     timeRemaining = 60 * 15;
     $('#time').text(Math.floor(timeRemaining / 60) + ':' + ('0' + timeRemaining % 60).slice(-2));
+    timeRemaining = timeRemaining + 1;
 }
 
 function stopStart()
@@ -46,10 +49,12 @@ function decrementTime()
         $('#time').text(Math.floor(timeRemaining / 60) + ':' + ('0' + timeRemaining % 60).slice(-2));
         if (timeRemaining == 0)
         {
-            stopStart();
+            started = false;
+            timeRemaining = 60 * 25;
+            $('#startStopButton').text('Stopped');
+            $('#startStopButton').css("background-color", "#990000");
             alarm.play();
         }
-        
     }
 }
 
