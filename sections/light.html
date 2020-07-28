@@ -1,8 +1,13 @@
 <template class="section-template">
-<section id="light" class="wrapper style3 fullscreen">
-  <div class="inner">
-    <h1>Ambient Brightness</h1>
-    <p>Why is your screen so bright?</p>
-  </div>
-</section>
-</template>
+  <section id="light" class="wrapper style3 fullscreen">
+    <div class="inner" style="text-align:center">
+      <h1>Ambient Brightness</h1>
+      <p>Using a camera, this page automatically changes its brightness based on the lighting of your room</p>
+  
+      <video hidden id="video" width="640" height="480" autoplay></video>
+      <canvas hidden id="canvas" width="640" height="480"></canvas>
+    </div>
+    <script src="assets/js/light.js"></script>
+  </section>
+  </template>
+  

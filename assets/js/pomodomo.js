@@ -42,7 +42,6 @@ var alarm = document.getElementById("alarmAudio");
 
 function decrementTime()
 {
-    console.log(started);
     if (started)
     {
         timeRemaining = timeRemaining - 1;
