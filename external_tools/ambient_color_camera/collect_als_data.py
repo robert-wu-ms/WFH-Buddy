@@ -5,7 +5,7 @@ import winrt.windows.devices.sensors as sensors
 import time
 
 def get_capture():
-    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    cap = cv2.VideoCapture(0)
 
     # Lower resolution to speed up processing
     cap.set(3, 640)
@@ -30,14 +30,17 @@ def write_data_to_file(iter, img, lux):
 
 def main():
     iter = 0
+    als = sensors.LightSensor.get_default()
 
-    for i in range(2):
-        time.sleep(0.5)
+    for i in range(100):
+        print("Getting video capture")
         img = get_capture()
-        lux = sensors.LightSensor.get_default().get_current_reading().illuminance_in_lux
+        print("Getting lux")
+        lux = als.get_current_reading().illuminance_in_lux
         write_data_to_file(iter, img, lux)
 
         iter = iter + 1
+        # time.sleep(0.5)
 
 
 if __name__ == "__main__":
