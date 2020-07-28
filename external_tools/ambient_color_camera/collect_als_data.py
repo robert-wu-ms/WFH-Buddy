@@ -2,11 +2,7 @@ import cv2
 import numpy as np
 import colour
 import winrt.windows.devices.sensors as sensors
-
-def show_img(img):
-    cv2.imshow('Image', img)
-    cv2.waitKey(0)
-
+import time
 
 def get_capture():
     cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
@@ -24,19 +20,24 @@ def get_capture():
         return img
 
 
-def calc_lum(img):
-    w = img.shape[1]
-    h = img.shape[0]
-
-    img2 = cv2.cvtColor(img, cv2.COLOR_BGR2YUV)
-    y, u, v = cv2.split(img2)
-    
-    return np.mean(y)
+def write_data_to_file(iter, img, lux):
+    print("Writing iteration {}".format(iter))
+    cv2.imwrite("{}.png".format(iter), img)
+    text = open("{}.txt".format(iter), "w")
+    text.write(str(lux))
+    text.close()
 
 
 def main():
-    # img = get_capture()
-    als = sensors.LightSensor.get_default()
+    iter = 0
+
+    for i in range(2):
+        time.sleep(0.5)
+        img = get_capture()
+        lux = sensors.LightSensor.get_default().get_current_reading().illuminance_in_lux
+        write_data_to_file(iter, img, lux)
+
+        iter = iter + 1
 
 
 if __name__ == "__main__":
