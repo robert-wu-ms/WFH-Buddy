@@ -27,12 +27,12 @@ def main():
         img = get_cap()
         avg_color_rgb = bgr_to_rgb(avg_image_colors(img))
         avg_color_xyz = colour.sRGB_to_XYZ(avg_color_rgb)
-        avg_color_xy = XYZ_to_xy(avg_color_xyz)
+        avg_color_xy = colour.XYZ_to_xy(avg_color_xyz)
         avg_color_cct = colour.xy_to_CCT(avg_color_xy, 'hernandez1999')
         avg_img_color_cct_xy = colour.temperature.CCT_to_xy(avg_color_cct)
 
         print("Average RGB Value: {}, Rounded CCT: {}, Sent xy: {}".format(
-            avg_color_rgb, avg_Color_cct, avg_img_color_cct_xy))
+            avg_color_rgb, avg_color_cct, avg_img_color_cct_xy))
 
         set_acs_sample(avg_img_color_cct_xy[0], avg_img_color_cct_xy[1])
 
