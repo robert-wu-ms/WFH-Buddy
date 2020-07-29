@@ -72,10 +72,10 @@ function getPose()
     {
         $('#straightArms').text('Unknown');
     }
-    else if ((leftElbow.position.x + 15 < leftShoulder.position.x) &&
-        (leftElbow.position.x > leftShoulder.position.x + 15) &&
-        (rightElbow.position.x + 15 < rightShoulder.position.x) &&
-        (rightElbow.position.x > rightShoulder.position.x + 15))
+    else if ((leftElbow.position.x < leftShoulder.position.x + 15) &&
+        (leftElbow.position.x + 15 > leftShoulder.position.x) &&
+        (rightElbow.position.x < rightShoulder.position.x + 15) &&
+        (rightElbow.position.x + 15 > rightShoulder.position.x))
     {
         $('#straightArms').text('True');
     }
