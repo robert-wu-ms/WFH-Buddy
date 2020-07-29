@@ -26,12 +26,15 @@ async function getGlobalNet()
 
 getGlobalNet();
 
-imageElement.onloadeddata = function() {
-  pictureSnap();
-}
+pictureSnap();
 
 var totalPostureCount = 0;
 var goodPostureCount = 0;
+
+var unknownPostureConsecutiveCount = 0;
+var postureCountSinceLastBreak = 0;
+
+var numBreaksTaken = 0;
 
 async function getPose()
 {
@@ -109,13 +112,32 @@ async function getPose()
 
             if (!isUnknownPosture)
             {
+                postureCountSinceLastBreak += 1;
+                if (unknownPostureConsecutiveCount > 60)
+                {
+                    postureCountSinceLastBreak = 0;
+                    numBreaksTaken += 1;
+                    $('#numBreaksTaken').text(numBreaksTaken);
+                }
+                if (postureCountSinceLastBreak > 60 * 25)
+                {
+                    dialog.handler.showMessageBox();
+                    postureCountSinceLastBreak = 0;
+                }
+
                 totalPostureCount += 1;
                 if (isGoodPosture)
                 {
                     goodPostureCount += 1;
                 }
                 $('#postureGoodPercent').text(Math.round(100 * goodPostureCount / totalPostureCount));
+                unknownPostureConsecutiveCount = 0;
             }
+            else
+            {
+                unknownPostureConsecutiveCount += 1;
+            }
+
         })
     }
 }
