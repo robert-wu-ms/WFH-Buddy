@@ -3,15 +3,16 @@
     <div class="inner" style="text-align:center">
       <h1>Ambient Brightness</h1>
 
-      <h3>Your screen is at <a id="screenBrightness">Unknown</a> percent</h3>
-      <h3>Your brightness should be around <a id="suggestedBrightness">Unknown</a> percent</h3>
+      <div>Your screen is at <a id="screenBrightness">Unknown</a> percent</div>
+      <div>Your brightness should be around <a id="suggestedBrightness">Unknown</a> percent</div>
 
-      <h2>Your brightness is <a id="brightnessEvaluation">Unknown</a></h2>
-
-      <h3>Manually Set Brightness Value</h3>
+      <br>
+      <h3>Your brightness is <a id="brightnessEvaluation">Unknown</a></h3>
+      <br>
+      <div>Manually Set Brightness Value</div>
       <input type="range" min="0" max="100" value="50" id="brightnessSlider" oninput="setBrightness(this.value)" onchange="setBrightness(this.value)">
-
-      <h3>Toggle Automatic Brightness Adjustment</h3>
+      <br>
+      <div>Toggle Automatic Brightness Adjustment</div>
       <ul class="actions">
         <li><button style="background-color:#aa0000;" id="autoBrightnessOnButton" onclick="toggleAutoBrightness()">Off</button></li>
       </ul>

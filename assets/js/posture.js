@@ -30,6 +30,9 @@ imageElement.onloadeddata = function() {
   pictureSnap();
 }
 
+var totalPostureCount = 0;
+var goodPostureCount = 0;
+
 async function getPose()
 {
     if (globalNet)
@@ -47,7 +50,10 @@ async function getPose()
             rightShoulder = pose.keypoints[6];
             leftElbow = pose.keypoints[7];
             rightElbow = pose.keypoints[8];
-        
+            
+            isGoodPosture = true;
+            isUnknownPosture = true;
+
             if ((nose.score < .7) || (leftEar.score < .7) || (rightEar.score < .7))
             {
                 $('#faceForward').text('Unknown');
@@ -56,10 +62,13 @@ async function getPose()
                 (rightEar.position.x - nose.position.x < nose.position.x - leftEar.position.x + 15))
             {
                 $('#faceForward').text('True');
+                isUnknownPosture = false;
             }
             else
             {
                 $('#faceForward').text('False');
+                isGoodPosture = false;
+                isUnknownPosture = false;
             }
         
             if ((leftShoulder.score < .7) || (rightShoulder.score < .7))
@@ -70,10 +79,13 @@ async function getPose()
                 (leftShoulder.position.y < rightShoulder.position.y + 15))
             {
                 $('#parallelShoulders').text('True');
+                isUnknownPosture = false;
             }
             else
             {
                 $('#parallelShoulders').text('False');
+                isGoodPosture = false;
+                isUnknownPosture = false;
             }
 
             if ((leftShoulder.score < .7) || (rightShoulder.score < .7) || (leftElbow.score < .7) || (rightElbow.score < .7))
@@ -86,10 +98,23 @@ async function getPose()
                 (rightElbow.position.x > rightShoulder.position.x))
             {
                 $('#straightArms').text('True');
+                isUnknownPosture = false;
             }
             else
             {
                 $('#straightArms').text('False');
+                isGoodPosture = false;
+                isUnknownPosture = false;
+            }
+
+            if (!isUnknownPosture)
+            {
+                totalPostureCount += 1;
+                if (isGoodPosture)
+                {
+                    goodPostureCount += 1;
+                }
+                $('#postureGoodPercent').text(Math.round(100 * goodPostureCount / totalPostureCount));
             }
         })
     }

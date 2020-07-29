@@ -1,11 +1,14 @@
 timeRemaining = 60 * 25;
 started = false;
+isBreakTimer = false;
+numBreaksTaken = 0;
 
 function pomodomoTimer()
 {
     timeRemaining = 60 * 25;
     $('#time').text(Math.floor(timeRemaining / 60) + ':' + ('0' + timeRemaining % 60).slice(-2));
     timeRemaining = timeRemaining + 1;
+    isBreakTimer = false;
 }
 
 function shortBreakTimer()
@@ -13,6 +16,7 @@ function shortBreakTimer()
     timeRemaining = 60 * 5;
     $('#time').text(Math.floor(timeRemaining / 60) + ':' + ('0' + timeRemaining % 60).slice(-2));
     timeRemaining = timeRemaining + 1;
+    isBreakTimer = true;
 }
 
 function longBreakTimer()
@@ -20,6 +24,7 @@ function longBreakTimer()
     timeRemaining = 60 * 15;
     $('#time').text(Math.floor(timeRemaining / 60) + ':' + ('0' + timeRemaining % 60).slice(-2));
     timeRemaining = timeRemaining + 1;
+    isBreakTimer = true;
 }
 
 function stopStart()
@@ -53,6 +58,13 @@ function decrementTime()
             $('#startStopButton').text('Stopped');
             $('#startStopButton').css("background-color", "#990000");
             alarm.play();
+
+            if(isBreakTimer)
+            {
+                numBreaksTaken += 1;
+                $('#numBreaksTaken').text(numBreaksTaken);
+            }
+            isBreakTimer = false;
         }
     }
 }

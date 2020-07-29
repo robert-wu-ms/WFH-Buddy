@@ -27,6 +27,9 @@ var context = canvas.getContext('2d');
 
 var autobrightnessOn = false;
 
+var totalBrightnessCount = 0;
+var goodBrightnessCount = 0;
+
 function changeBackgroundColor()
 {
     var yTotal = 0;
@@ -50,6 +53,9 @@ function changeBackgroundColor()
                 var screenBrightness = Math.round(level * 100);
                 $('#screenBrightness').text(screenBrightness);
                 $('#brightnessEvaluation').text("at a good level");
+                totalBrightnessCount += 1;
+                goodBrightnessCount += 1;
+                $('#brightnessGoodPercent').text(Math.round(100 * goodBrightnessCount / totalBrightnessCount));
             });
         });
     }
@@ -58,6 +64,7 @@ function changeBackgroundColor()
         brightness.get().then(level => {
             var screenBrightness = Math.round(level * 100);
             $('#screenBrightness').text(screenBrightness);
+            totalBrightnessCount += 1;
             if(screenBrightness > suggestedBrightness + 20)
             {
                 $('#brightnessEvaluation').text("too high");
@@ -69,7 +76,9 @@ function changeBackgroundColor()
             else
             {
                 $('#brightnessEvaluation').text("at a good level");
+                goodBrightnessCount += 1;
             }
+            $('#brightnessGoodPercent').text(Math.round(100 * goodBrightnessCount / totalBrightnessCount));
         });
     }
 }

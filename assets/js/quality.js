@@ -57,6 +57,8 @@ window.requestAnimationFrame(animate);
 
 var imageAddr = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Animated_Wallpaper_Windows_10_-_Wallpaper_Engine.gif/800px-Animated_Wallpaper_Windows_10_-_Wallpaper_Engine.gif"; 
 var downloadSize = 1911868 ; //bytes
+var totalPacketsRecieved = 0;
+var goodPacketsRecieved = 0;
 
 function InitiateSpeedDetection() {
     window.setTimeout(MeasureConnectionSpeed, 1);
@@ -80,7 +82,13 @@ function MeasureConnectionSpeed() {
         var speedBps = (bitsLoaded / duration).toFixed(2);
         var speedKbps = (speedBps / 1024).toFixed(2);
         var speedMbps = (speedKbps / 1024).toFixed(2);
+        totalPacketsRecieved += 1;
+        if (speedMbps >= 50)
+        {
+            goodPacketsRecieved += 1;
+        }
         $('#speed').text(speedMbps + ' Mbps');
+        $('#percentGoodNetwork').text(Math.round(100 * goodPacketsRecieved / totalPacketsRecieved));
     }
 }
 
