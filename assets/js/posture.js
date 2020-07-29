@@ -29,23 +29,23 @@ function getPose()
     });
     return pose;
   }).then(function(pose){
-    console.log(pose);
-    console.log(pose.keypoints[0].part, pose.keypoints[0].position.x, pose.keypoints[0].position.y);
+    //console.log(pose);
+    //console.log(pose.keypoints[0].part, pose.keypoints[0].position.x, pose.keypoints[0].position.y);
 
     nose = pose.keypoints[0];
-    leftEar = pose.keypoints[3];
-    rightEar = pose.keypoints[4];
+    leftEye = pose.keypoints[1];
+    rightEye = pose.keypoints[2];
     leftShoulder = pose.keypoints[5];
     rightShoulder = pose.keypoints[6];
     leftElbow = pose.keypoints[7];
     rightElbow = pose.keypoints[8];
 
-    if ((nose.score < .7) || (leftEar.score < .7) || (rightEar.score < .7))
+    if ((nose.score < .7) || (leftEye.score < .7) || (rightEye.score < .7))
     {
         $('#faceForward').text('Unknown');
     }
-    else if ((rightEar.position.x - nose.position.x + 15 > nose.position.x - leftEar.position.x) &&
-        (rightEar.position.x - nose.position.x < nose.position.x - leftEar.position.x + 15))
+    else if ((rightEye.position.x - nose.position.x + 15 > nose.position.x - leftEye.position.x) &&
+        (rightEye.position.x - nose.position.x < nose.position.x - leftEye.position.x + 15))
     {
         $('#faceForward').text('True');
     }
@@ -72,10 +72,10 @@ function getPose()
     {
         $('#straightArms').text('Unknown');
     }
-    else if ((leftElbow.position.x < leftShoulder.position.x + 15) &&
-        (leftElbow.position.x + 15 > leftShoulder.position.x) &&
-        (rightElbow.position.x < rightShoulder.position.x + 15) &&
-        (rightElbow.position.x + 15 > rightShoulder.position.x))
+    else if ((leftElbow.position.x < leftShoulder.position.x) &&
+        (leftElbow.position.x + 60 > leftShoulder.position.x) &&
+        (rightElbow.position.x < rightShoulder.position.x + 60) &&
+        (rightElbow.position.x > rightShoulder.position.x))
     {
         $('#straightArms').text('True');
     }
