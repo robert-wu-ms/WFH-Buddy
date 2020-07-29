@@ -23,8 +23,6 @@ function changeBackgroundColor()
         yTotal += (pixels[i * 4] * .299000 + pixels[i * 4 + 1] * .587000 + pixels[i * 4 + 2] * .114000) / (640 * 480);
     }
 
-    console.log(yTotal);
-
     $('#light').css("opacity", yTotal / 200);
 }
 
