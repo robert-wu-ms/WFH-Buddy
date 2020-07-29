@@ -1,6 +1,6 @@
 {
   "name": "electron-tutorial-app",
-  "productName": "Ergonomic Electron App",
+  "productName": "WFH Buddy",
   "description": "Application to help extended computer use",
   "version": "1.0.0",
   "main": "main.js",
@@ -18,7 +18,7 @@
   },
   "scripts": {
     "package-mac": "electron-packager . --overwrite --asar --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds --darwinDarkModeSupport=true",
-    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Ergonomic Electron App\"",
+    "package-win": "electron-packager . electron-tutorial-app --overwrite --asar --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"WFH Buddy\"",
     "package-linux": "electron-packager . electron-tutorial-app --overwrite --asar --platform=linux --arch=x64 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds",
     "create-installer-mac": "electron-installer-dmg ./release-builds/Electron\\ tutorial\\ app-darwin-x64/Electron\\ tutorial\\ app.app electron-tutorial-app --out=release-builds --overwrite --icon=assets/icons/mac/icon.icns",
     "create-installer-win": "node installers/windows/createinstaller.js",
