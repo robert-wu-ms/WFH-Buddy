@@ -34,8 +34,8 @@ async function getPose()
         globalNet.estimateSinglePose(imageElement, {
             flipHorizontal: true
             }).then(function(pose){
-            console.log(pose);
-            console.log(pose.keypoints[0].part, pose.keypoints[0].position.x, pose.keypoints[0].position.y);
+            //console.log(pose);
+            //console.log(pose.keypoints[0].part, pose.keypoints[0].position.x, pose.keypoints[0].position.y);
         
             nose = pose.keypoints[0];
             leftEar = pose.keypoints[3];
