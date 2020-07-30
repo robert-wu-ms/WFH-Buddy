@@ -1,7 +1,7 @@
 # WFH Buddy
 An electron application with various ergonomic and well-being features. This app has been tested for Windows. Your mileage may vary on different operating systems
 
-![Welcome!](\assets\images\Welcome.PNG)
+![Welcome!](assets\images\Welcome.PNG)
 
 ## Installation instructions
 1. Install Node.js
@@ -13,10 +13,10 @@ An electron application with various ergonomic and well-being features. This app
 
 ## Pages
 
-![Posture](\assets\images\Posture.PNG)
+![Posture](assets\images\Posture.PNG)
 
-![Brightness](\assets\images\Brightness.PNG)
+![Brightness](assets\images\Brightness.PNG)
 
-![Network](\assets\images\Network.PNG)
+![Network](assets\images\Network.PNG)
 
-![Pomodoro](\assets\images\Pomodoro.PNG)
+![Pomodoro](assets\images\Pomodoro.PNG)
