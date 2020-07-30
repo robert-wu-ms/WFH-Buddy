@@ -1,5 +1,5 @@
 # WFH Buddy
-An electron application with various ergonomic and well-being features
+An electron application with various ergonomic and well-being features. This app has been tested for Windows. Your mileage may vary on different operating systems
 
 ## Installation instructions
 1. Install Node.js
